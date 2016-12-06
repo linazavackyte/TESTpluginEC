@@ -1,0 +1,10 @@
+{
+  "name": "EasyCredit",
+  "description": "Pay with EasyCredit",
+  "author": "hashtagES",
+  "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
+  "type": "payment",
+  "namespace": "EasyCredit",
+  "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
+  "require": []
+}
