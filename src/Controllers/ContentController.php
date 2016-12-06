@@ -17,8 +17,7 @@ class ContentController extends Controller
 	 */
 	public function sayHello(Twig $twig):string
 	{
-		$value = TestValue::getTestValue();
-		$twig->addGlobal('testval', $value);
+		$twig->addGlobal('testval', 'test output');
 		return $twig->render('HelloWorld::content.hello');
 	}
 }
