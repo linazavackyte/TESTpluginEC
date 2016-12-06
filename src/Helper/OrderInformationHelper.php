@@ -42,10 +42,10 @@
          */
         public function __construct()
         {
-            $this->personData       = $personData;
-            $this->billingAdress    = $billingAddress;
-            $this->deliveryAddress  = $deliveryAddress;
-            $this->amount           = $amount;
+            // $this->personData       = $personData;
+            // $this->billingAddress    = $billingAddress;
+            // $this->deliveryAddress  = $deliveryAddress;
+            // $this->amount           = $amount;
         }
         
         /**
@@ -60,8 +60,8 @@
          * @return array(Street => string, City => string, Zip => int, CountryCode => string)
          */
         public function getBillingAddress()
-        {
-            $billingAddress = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
+        { 
+            // $billingAddress = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
         }
         
         /**
