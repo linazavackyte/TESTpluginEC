@@ -1,8 +1,10 @@
 {
-      "name":"TESToutputInView",
-      "description":"My first plugin",
-      "namespace":"HelloWorld",
-      "author":"LinaZ",
-      "type":"template",
-      "serviceProvider":"HelloWorld\\Providers\\HelloWorldServiceProvider"
+  "name": "TestOrderInfoHelper",
+  "description": "Pay with EasyCredit",
+  "author": "LinaZ",
+  "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
+  "type": "payment",
+  "namespace": "EasyCredit",
+  "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
+  "require": []
 }

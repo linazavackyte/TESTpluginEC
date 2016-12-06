@@ -1,5 +1,4 @@
-plentymarkets plugin hello world
-
+plentymarkets plugin payuponpickup
 Copyright © 2016 plentymarkets GmbH
 
 According to our dual licensing model, this program can be used either
