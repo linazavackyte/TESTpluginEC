@@ -1,7 +1,7 @@
 {
-  "name": "EasyCredit",
+  "name": "TESTeasyCredit",
   "description": "Pay with EasyCredit",
-  "author": "hashtagES",
+  "author": "LinaZ",
   "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
   "type": "payment",
   "namespace": "EasyCredit",
