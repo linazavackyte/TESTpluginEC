@@ -12,64 +12,29 @@
      */
     class OrderInformationHelper
     {
-        /**
-         * @var $personData
-         */
-        private $personData;
-        
-        /**
-         * @var $billingAddress
-         */
-        private $billingAddress;
-        
-        /**
-         * @var $deliveryAddress
-         */
-        private $deliveryAddress;
-        
-        /**
-         * @var $amount
-         */
-        private $amount;
-        
-        /**
-         * OrderInformation constructor
-         * 
-         * @param $personData
-         * @param $billingAddress
-         * @param $deliveryAddress
-         * @param $amount
-         */
-        public function __construct()
-        {
-            // $this->personData       = $personData;
-            // $this->billingAddress    = $billingAddress;
-            // $this->deliveryAddress  = $deliveryAddress;
-            // $this->amount           = $amount;
-        }
         
         /**
          * @return array(FirstName => string, LastName => string, Salutation => string)
          */
         public function getPersonData()
         {
-            
+            return ['FirstName' => 'Max', 'LastName' => 'Mustermann', 'Salutation' => 'HERR'];
         }
         
         /**
-         * @return array(Street => string, City => string, Zip => int, CountryCode => string)
+         * @return array(Street => string, City => string, Zip => string, CountryCode => string)
          */
         public function getBillingAddress()
         { 
-            // $billingAddress = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
+            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => '90471', 'CountryCode' => 'DE'];
         }
         
         /**
-         * @return array(Street => string, City => string, Zip => int, CountryCode => string)
+         * @return array(Street => string, City => string, Zip => string, CountryCode => string)
          */
         public function getDeliveryAddress()
         {
-            
+            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => '90471', 'CountryCode' => 'DE'];
         }
         
         /**
@@ -77,6 +42,6 @@
          */
         public function getAmount()
         {
-            
+            return 299.99;
         }
     }
