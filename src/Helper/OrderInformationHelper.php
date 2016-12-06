@@ -22,19 +22,19 @@
         }
         
         /**
-         * @return array(Street => string, City => string, Zip => string, CountryCode => string)
+         * @return array(Street => string, City => string, Zip => int, CountryCode => string)
          */
         public function getBillingAddress()
         { 
-            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => '90471', 'CountryCode' => 'DE'];
+            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => 90471, 'CountryCode' => 'DE'];
         }
         
         /**
-         * @return array(Street => string, City => string, Zip => string, CountryCode => string)
+         * @return array(Street => string, City => string, Zip => int, CountryCode => string)
          */
         public function getDeliveryAddress()
         {
-            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => '90471', 'CountryCode' => 'DE'];
+            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => 90471, 'CountryCode' => 'DE'];
         }
         
         /**
