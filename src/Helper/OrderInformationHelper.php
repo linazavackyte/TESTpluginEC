@@ -5,7 +5,9 @@
     use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
     use Plenty\Modules\Payment\Method\Models\PaymentMethod;
     use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
-
+    use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
+    use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
+    
     /**
      * Class OrderInformationHelper
      *
@@ -14,6 +16,16 @@
     class OrderInformationHelper
     {
         /**
+         * @var FrontendSessionStorageFactoryContract $FrontendSessionStorageFactoryContract
+         */
+        private $sessionStorage;
+        
+        /**
+         * @var AddressRepositoryContract $AddressRepositoryContract
+         */
+        private $addressRepo;
+        
+        /**
          * @var BasketRepositoryContract $BasketRepositoryContract
          */
         private $basket;
@@ -21,8 +33,12 @@
         /**
          * OrderInformationHelper constructor
          */
-        public function __construct(BasketRepositoryContract $BasketRepositoryContract)
+        public function __construct(    BasketRepositoryContract $BasketRepositoryContract,
+                                        FrontendSessionStorageFactoryContract $FrontendSessionStorageFactoryContract,
+                                        AddressRepositoryContract $AddressRepositoryContract)
         {
+            $this->sessionStorage = $FrontendSessionStorageFactoryContract;
+            $this->addressRepo = $AddressRepositoryContract;
             $this->basket = $BasketRepositoryContract;
         }
         
@@ -41,9 +57,16 @@
          */
         public function getBillingAddress()
         { 
+            $billingAdressId = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
+            $shippingAddressDetails = $this->addressRepo->findAddressById($billingAdressId);
             
+            $shippingAddress = [];
+            $shippingAddress->Street        = $shippingAddressDetails->street.' '.$shippingAddressDetails->houseNumber;
+            $shippingAddress->City          = $shippingAddressDetails->town;
+            $shippingAddress->Zip           = $shippingAddressDetails->postalCode;
+            $shippingAddress->CountryCode   = 'DE';
             
-            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => 90471, 'CountryCode' => 'DE'];
+            return $shippingAddress;
         }
         
         /**
@@ -51,9 +74,16 @@
          */
         public function getDeliveryAddress()
         {
+            $shippingAddressId = $this->sessionStorage->getPlugin()->getValue("deliveryAddressId");
+            $shippingAddressDetails = $this->addressRepo->findAddressById($shippingAddressId);
             
+            $deliveryAddress = [];
+            $deliveryAddress->Street        = $shippingAddressDetails->street.' '.$shippingAddressDetails->houseNumber;
+            $deliveryAddress->City          = $shippingAddressDetails->town;
+            $deliveryAddress->Zip           = $shippingAddressDetails->postalCode;
+            $deliveryAddress->CountryCode   = 'DE';
             
-            return ['Street' => 'Beuthener Str. 25', 'City' => 'Nürnberg', 'Zip' => 90471, 'CountryCode' => 'DE'];
+            return $deliveryAddress;
         }
         
         /**
@@ -61,8 +91,6 @@
          */
         public function getAmount()
         {
-            $basket = $this->basket->load();
-            
-            return 299.99;
+            return $this->basket->load()->basketAmount;
         }
     }
