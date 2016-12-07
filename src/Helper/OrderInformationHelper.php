@@ -4,7 +4,7 @@
 
     use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
     use Plenty\Modules\Payment\Method\Models\PaymentMethod;
-    use Plenty\Modules\Basket\Contracts;
+    use Plenty\Modules\Basket;
 
     /**
      * Class OrderInformationHelper
@@ -19,7 +19,7 @@
         /**
          * OrderInformationHelper constructor
          */
-        public function __construct(Contracts $contracts)
+        public function __construct(Basket $contracts)
         {
             $this->basketContract = $contracts;
         }

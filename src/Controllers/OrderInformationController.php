@@ -17,7 +17,7 @@ class OrderInformationController extends Controller
 	 * @param Twig $twig
 	 * @return string
 	 */
-    public function sayPersonData(Twig $twig):string
+    public function sayPersonData(Twig $twig)
     {
         return $twig->render('EasyCredit::Order.OrderInformation');
     }
