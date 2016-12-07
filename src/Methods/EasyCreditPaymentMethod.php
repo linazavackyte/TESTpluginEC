@@ -22,23 +22,9 @@
          * @return bool
          */
         public function isActive( ConfigRepository $configRepository,
-                                  BasketRepositoryContract $basketRepositoryContract):bool
+                                  BasketRepositoryContract $basketRepositoryContract)
         {
-            /** @var bool $active */
-            $active = true;
-
-            /** @var Basket $basket */
-            $basket = $basketRepositoryContract->load();
-
-            /**
-             * Check the shipping profile ID. The ID can be entered in the config.json.
-             */
-            if( $configRepository->get('EasyCredit.shippingProfileId') != $basket->shippingProfileId)
-            {
-                $active = false;
-            }
-
-            return $active;
+            return true;
         }
 
         /**
@@ -47,7 +33,7 @@
          * @param ConfigRepository $configRepository
          * @return string
          */
-        public function getName( ConfigRepository $configRepository ):string
+        public function getName(ConfigRepository $configRepository)
         {
             $name = $configRepository->get('EasyCredit.name');
 
@@ -66,7 +52,7 @@
          * @param ConfigRepository $configRepository
          * @return string
          */
-        public function getIcon( ConfigRepository $configRepository ):string
+        public function getIcon(ConfigRepository $configRepository)
         {
             if($configRepository->get('EasyCredit.logo') == 1)
             {
@@ -81,7 +67,7 @@
          * @param ConfigRepository $configRepository
          * @return string
          */
-        public function getDescription( ConfigRepository $configRepository ):string
+        public function getDescription(ConfigRepository $configRepository)
         {
             if($configRepository->get('EasyCredit.infoPage.type') == 1)
             {

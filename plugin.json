@@ -1,14 +1,17 @@
 {
- "version": 1.0,
- "name": "EasyCredit",
- "description": "Pay with EasyCredit",
- "author": "hashtagES",
- "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
- "type": "payment",
- "namespace": "EasyCredit",
- "require": [],
- "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
- "dependencies":{
-     "darius-sakaliunas/easy-credit-api":"*" 
- }
+  "version": 1.0,
+  "name": "EasyCredit",
+  "description": "Pay with EasyCredit",
+  "author": "hashtagES",
+  "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
+  "type": "payment",
+  "namespace": "EasyCredit",
+  "require": [],
+  "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
+  "dependencies":{
+      "darius-sakaliunas/easy-credit-api":"dev-master" 
+  },
+  "runOnBuild": [
+    "EasyCredit\\Migrations\\CreatePaymentMethod"
+  ]
 }

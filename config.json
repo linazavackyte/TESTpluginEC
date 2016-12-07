@@ -8,6 +8,27 @@
   },
   {
     "tab": "Settings",
+    "key": "easyCreditShopID",
+    "label": "EasyCredit Shop ID",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Settings",
+    "key": "easyCreditShopToken",
+    "label": "EasyCredit Shop Token",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipping Profile",
+    "key": "shippingProfileId",
+    "label": "Shipping profile ID",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipping Profile",
     "key": "infoPage.type",
     "label": "Information page",
     "type": "dropdown",
@@ -19,20 +40,20 @@
     "default": "0"
   },
   {
-    "tab": "Settings",
+    "tab": "Shipping Profile",
     "key": "infoPage.intern",
     "label": "Internal information page",
     "type": "category_select"
   },
   {
-    "tab": "Settings",
+    "tab": "Shipping Profile",
     "key": "infoPage.extern",
     "label": "External information page",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Settings",
+    "tab": "Shipping Profile",
     "key": "logo",
     "label": "Logo",
     "type": "dropdown",
@@ -43,16 +64,9 @@
     "default": "0"
   },
   {
-    "tab": "Settings",
+    "tab": "Shipping Profile",
     "key": "logo.url",
     "label": "Logo URL",
-    "type": "text",
-    "default": ""
-  },
-  {
-    "tab": "Settings",
-    "key": "shippingProfileId",
-    "label": "Shipping profile ID",
     "type": "text",
     "default": ""
   }

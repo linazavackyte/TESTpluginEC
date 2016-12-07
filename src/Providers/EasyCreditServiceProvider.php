@@ -6,6 +6,7 @@
     use Plenty\Modules\Payment\Events\Checkout\GetPaymentMethodContent;
     use Plenty\Plugin\ServiceProvider;
     use EasyCredit\Helper\EasyCreditHelper;
+    use EasyCredit\Helper\BasketHelper;
     use Plenty\Modules\Payment\Method\Contracts\PaymentMethodContainer;
     use Plenty\Plugin\Events\Dispatcher;
 
@@ -32,19 +33,17 @@
          * @param EasyCreditHelper $paymentHelper
          * @param PaymentMethodContainer $payContainer
          * @param Dispatcher $eventDispatcher
-         */
-        public function boot( EasyCreditHelper $paymentHelper,
+         **/
+        public function boot( BasketHelper $basketHelper,
+                              EasyCreditHelper $paymentHelper,
                               PaymentMethodContainer $payContainer,
                               Dispatcher $eventDispatcher)
         {
-            // Create the ID of the payment method if it doesn't exist yet
-            $paymentHelper->createMopIfNotExists();
-
             // Register the Pay upon pickup payment method in the payment method container
             $payContainer->register('plenty_easycredit::EASYCREDIT', EasyCreditPaymentMethod::class,
-                                  [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]
+                          [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]
             );
-
+            
             // Listen for the event that gets the payment method content
             $eventDispatcher->listen(GetPaymentMethodContent::class,
                     function(GetPaymentMethodContent $event) use( $paymentHelper)
