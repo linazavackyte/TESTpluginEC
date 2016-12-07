@@ -7,7 +7,6 @@
     use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
     use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
     use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
-    use Plenty\Modules\Account\Address\Models;
     
     /**
      * Class OrderInformationHelper
@@ -16,11 +15,6 @@
      */
     class OrderInformationHelper
     {
-        /**
-         * @var Models $Models
-         */
-        private $models;
-        
         /**
          * @var FrontendSessionStorageFactoryContract $FrontendSessionStorageFactoryContract
          */
@@ -43,7 +37,6 @@
                                         FrontendSessionStorageFactoryContract $FrontendSessionStorageFactoryContract,
                                         AddressRepositoryContract $AddressRepositoryContract)
         {
-            $this->models = $Models;
             $this->sessionStorage = $FrontendSessionStorageFactoryContract;
             $this->addressRepo = $AddressRepositoryContract;
             $this->basket = $BasketRepositoryContract;
@@ -54,9 +47,12 @@
          */
         public function getPersonData()
         {
+            $billingAdressId = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
+            $personDataDetails = $this->addressRepo->findAddressById($billingAdressId);
+            
             $personData = [];
-            $personData->FirstName  = $this->models->name2;
-            $personData->LastName   = $this->models->name3;
+            $personData->FirstName  = $personDataDetails->name2;
+            $personData->LastName   = $personDataDetails->name3;
             $personData->Salutation = 'HERR';
             
             return $personData;
