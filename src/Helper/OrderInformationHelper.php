@@ -16,7 +16,7 @@
         /**
          * @var BasketRepositoryContract $BasketRepositoryContract
          */
-        private $basketContract;
+        private $basket;
         
         /**
          * OrderInformationHelper constructor
