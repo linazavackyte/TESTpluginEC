@@ -1,10 +1,14 @@
 {
-  "name": "TestOrderInfoHelper",
-  "description": "Pay with EasyCredit",
-  "author": "LinaZ",
-  "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
-  "type": "payment",
-  "namespace": "EasyCredit",
-  "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
-  "require": []
+ "version": 1.0,
+ "name": "EasyCredit",
+ "description": "Pay with EasyCredit",
+ "author": "hashtagES",
+ "keywords": ["plentymarkets", "payment method", "plugin", "EasyCredit"],
+ "type": "payment",
+ "namespace": "EasyCredit",
+ "require": [],
+ "serviceProvider": "EasyCredit\\Providers\\EasyCreditServiceProvider",
+ "dependencies":{
+     "darius-sakaliunas/easy-credit-api":"*" 
+ }
 }
