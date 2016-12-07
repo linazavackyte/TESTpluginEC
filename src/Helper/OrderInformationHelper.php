@@ -23,7 +23,7 @@
          */
         public function __construct(BasketRepositoryContract $BasketRepositoryContract)
         {
-            $this->basketContract = $BasketRepositoryContract;
+            $this->basket = $BasketRepositoryContract;
         }
         
         /**
@@ -61,7 +61,7 @@
          */
         public function getAmount()
         {
-            $basket = $this->basketContract->all();
+            $basket = $this->basket->load();
             
             return 299.99;
         }
