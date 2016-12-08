@@ -11,6 +11,8 @@
     use Plenty\Plugin\Events\Dispatcher;
 
     use EasyCredit\Methods\EasyCreditPaymentMethod;
+    
+    use EasyCredit\Services\EasyCreditPaymentService;
 
     use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
     use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
@@ -37,7 +39,8 @@
         public function boot( BasketHelper $basketHelper,
                               EasyCreditHelper $paymentHelper,
                               PaymentMethodContainer $payContainer,
-                              Dispatcher $eventDispatcher)
+                              Dispatcher $eventDispatcher,
+                              EasyCreditPaymentService $easyCreditPaymentService)
         {
             // Register the Pay upon pickup payment method in the payment method container
             $payContainer->register('plenty_easycredit::EASYCREDIT', EasyCreditPaymentMethod::class,
@@ -46,12 +49,12 @@
             
             // Listen for the event that gets the payment method content
             $eventDispatcher->listen(GetPaymentMethodContent::class,
-                    function(GetPaymentMethodContent $event) use( $paymentHelper)
+                    function(GetPaymentMethodContent $event) use( $paymentHelper, $easyCreditPaymentService)
                     {
                         if($event->getMop() == $paymentHelper->getPaymentMethod())
-                        {
-                           $event->setValue('');
-                           $event->setType('continue');
+                        { 
+                           $event->setValue($easyCreditPaymentService->getRedirectUrl());
+                           $event->setType('redirectUrl');
                         }
                     });
 
