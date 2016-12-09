@@ -85,7 +85,7 @@ class EasyCreditPaymentService
     
     public function getRedirectUrl(){
         
-        $result = 'https://www.google.lt/#q=' . $this->shopID . $this->shopToken;
+        $result = 'https://www.google.lt/#q=' . EasyCredit::generateRedirectionUrl;
         //$result = $this->libCall->call('EasyCredit::generateRedirectionUrl', $this->bootstrapOrderInfo());
         
         return $result;

@@ -21,6 +21,20 @@
     "default": ""
   },
   {
+    "tab": "Settings",
+    "key": "successUrl",
+    "label": "Successful payment page (Success URL)",
+    "type": "text",
+    "default": ""
+  },
+  {
+      "tab": "Settings",
+      "key": "cancelUrl",
+      "label": "Checkout page (Cancellation URL)",
+      "type": "text",
+      "default": ""
+  },
+  {
     "tab": "Shipping Profile",
     "key": "shippingProfileId",
     "label": "Shipping profile ID",
