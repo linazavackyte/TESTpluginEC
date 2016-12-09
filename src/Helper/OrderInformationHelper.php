@@ -50,10 +50,11 @@
             $billingAdressId = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
             $personDataDetails = $this->addressRepo->findAddressById($billingAdressId);
             
-            $personData = [];
-            $personData->FirstName  = $personDataDetails->name2;
-            $personData->LastName   = $personDataDetails->name3;
-            $personData->Salutation = 'HERR';
+            $personData = array (
+                'FirstName' => $personDataDetails->name2,
+                'LastName' => $personDataDetails->name3,
+                'Salutation' => 'HERR'
+            );
             
             return $personData;
         }
@@ -64,15 +65,16 @@
         public function getBillingAddress()
         { 
             $billingAdressId = $this->sessionStorage->getPlugin()->getValue("billingAddressId");
-            $shippingAddressDetails = $this->addressRepo->findAddressById($billingAdressId);
+            $billingAddressDetails = $this->addressRepo->findAddressById($billingAdressId);
             
-            $shippingAddress = [];
-            $shippingAddress->Street        = $shippingAddressDetails->street.' '.$shippingAddressDetails->houseNumber;
-            $shippingAddress->City          = $shippingAddressDetails->town;
-            $shippingAddress->Zip           = $shippingAddressDetails->postalCode;
-            $shippingAddress->CountryCode   = 'DE';
+            $billingAddress = array(
+                'Street' => $billingAddressDetails->street.' '.$billingAddressDetails->houseNumber,
+                'City' => $billingAddressDetails->town,
+                'Zip' => $billingAddressDetails->postalCode,
+                'CountryCode' => 'DE'
+            );
             
-            return $shippingAddress;
+            return $billingAddress;
         }
         
         /**
@@ -83,11 +85,12 @@
             $shippingAddressId = $this->sessionStorage->getPlugin()->getValue("deliveryAddressId");
             $shippingAddressDetails = $this->addressRepo->findAddressById($shippingAddressId);
             
-            $deliveryAddress = [];
-            $deliveryAddress->Street        = $shippingAddressDetails->street.' '.$shippingAddressDetails->houseNumber;
-            $deliveryAddress->City          = $shippingAddressDetails->town;
-            $deliveryAddress->Zip           = $shippingAddressDetails->postalCode;
-            $deliveryAddress->CountryCode   = 'DE';
+            $deliveryAddress = array(
+                'Street' => $shippingAddressDetails->street.' '.$shippingAddressDetails->houseNumber,
+                'City' => $shippingAddressDetails->town,
+                'Zip' => $shippingAddressDetails->postalCode,
+                'CountryCode' => 'DE'
+            );
             
             return $deliveryAddress;
         }
